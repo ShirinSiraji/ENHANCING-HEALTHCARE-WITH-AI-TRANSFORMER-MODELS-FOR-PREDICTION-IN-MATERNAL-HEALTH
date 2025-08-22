@@ -1,106 +1,34 @@
-## Enhancing Healthcare with AI: Transformer Models for Prediction in Maternal Health
-📌 Introduction
+#Enhancing Healthcare with AI: Transformer Models for Prediction in Maternal Health
+##Introduction
 
-Maternal mortality remains a critical public health issue in rural India, largely due to limited healthcare access and the absence of early warning systems. Traditional rule-based methods often lack real-time predictive capabilities.
+Maternal mortality remains a critical public health issue in rural India, largely due to limited healthcare access and the absence of early warning systems. Traditional rule-based methods often lacked real-time predictive capabilities.
 
-This project explores explainable AI (XAI) to predict maternal health risks using demographic and clinical data. The focus is not only on prediction accuracy but also on interpretability using SHAP values to build trust among healthcare workers.
+In this project, I developed an explainable AI model to predict maternal health risks using demographic and clinical data. The focus was on achieving both high prediction accuracy and interpretability using SHAP values to build trust among healthcare workers. The work specifically addressed three research questions: whether deep learning can outperform traditional machine learning in maternal risk prediction, which features are most predictive of maternal complications, and how SHAP can improve trust in AI-driven decisions.
 
-🎯 Objectives
+##Methodology
 
-Develop an explainable AI model for maternal health risk prediction.
+The dataset was obtained from the Open Government Data Platform (India), consisting of approximately 30,000 records and 24 features. Features included maternal age, delivery history, awareness of HIV/RTI, and knowledge of danger signs. The target variable was outcome_pregnancy, which had three classes: no risk, cannot decide, and complication.
 
-Compare traditional ML models with deep learning (Tab-Transformer).
+Preprocessing steps included imputing missing values, dropping irrelevant columns, encoding categorical variables using label encoding, and addressing class imbalance through stratified sampling.
 
-Use SHAP to interpret model predictions and enhance trust.
+Three models were implemented and compared. Logistic Regression served as the baseline. Random Forest was used to explore feature importance. A Tab-Transformer model was developed as a deep learning approach leveraging self-attention for tabular data.
 
-❓ Key Research Questions
+For explainability, SHAP (SHapley Additive exPlanations) was applied to interpret predictions and provide transparency into model decisions.
 
-Can deep learning outperform traditional ML in maternal risk prediction?
+##Results
 
-Which features are most predictive of maternal complications?
+The Logistic Regression model achieved an accuracy of 84.58 percent with a weighted F1-score of 83.25 percent. Random Forest performed slightly better with 85.96 percent accuracy and an F1-score of 84.50 percent. The Tab-Transformer achieved the best validation accuracy of 86.73 percent.
 
-How does SHAP help in improving trust in AI-driven decisions?
+The results showed that the most predictive features included maternal age, delivery history, and awareness of danger signs. The Tab-Transformer outperformed traditional models by capturing complex feature interactions more effectively. SHAP analysis further revealed nonlinear relationships, such as certain age thresholds that significantly influenced the likelihood of high-risk pregnancies.
 
-🔬 Methodology
-📂 Dataset
+##Challenges and Solutions
 
-Source: Open Government Data Platform (India)
+The dataset presented challenges in terms of missing values and irrelevant features, which were addressed through careful imputation and feature removal. Class imbalance was mitigated using stratified sampling to ensure fair representation of all classes. To address the challenge of interpretability, SHAP was integrated to generate actionable insights for healthcare workers, thereby bridging the gap between AI predictions and practical healthcare decision-making.
 
-Size: ~30,000 records, 24 features
+##Future Work
 
-Features: Age, delivery history, awareness of HIV/RTI, awareness of danger signs, etc.
+Future extensions of this work include testing the models on datasets from different regions of India to enhance generalizability. Another planned improvement is real-time deployment by integrating the models into mobile applications for rural healthcare workers. Additionally, hybrid approaches that combine the Tab-Transformer with temporal models such as LSTMs can be explored to analyze longitudinal maternal health data more effectively.
 
-Target: outcome_pregnancy (3 classes → No risk, Cannot decide, Complication)
+Impact
 
-⚙️ Preprocessing
-
-Missing values handled (imputation, column removal).
-
-Categorical encoding (label encoding).
-
-Class imbalance mitigated (stratified sampling).
-
-🤖 Models Compared
-
-Logistic Regression (baseline)
-
-Random Forest (feature importance analysis)
-
-Tab-Transformer (deep learning with self-attention for tabular data)
-
-📊 Explainability
-
-SHAP (SHapley Additive exPlanations) applied to all models for interpretability.
-
-📈 Results
-Model	Accuracy	F1-Score (Weighted)
-Logistic Regression	84.58%	83.25%
-Random Forest	85.96%	84.50%
-Tab-Transformer	86.73%	N/A (best val. acc.)
-🔑 Key Findings
-
-Top Features: Age, delivery history, awareness of danger signs.
-
-Tab-Transformer captured complex feature interactions better than traditional ML models.
-
-SHAP revealed nonlinear relationships (e.g., age thresholds affecting risk).
-
-📉 Visual Insights
-
-Age Distribution: Younger mothers (<30) showed higher complication rates.
-
-Feature Importance: Delivery history and maternal age were most influential.
-
-⚡ Challenges & Solutions
-
-Data Quality: Handled missing values and removed irrelevant features.
-
-Class Imbalance: Addressed using stratified sampling.
-
-Interpretability: SHAP provided actionable insights for healthcare workers.
-
-🚀 Future Work
-
-Expand to diverse regional datasets for better generalization.
-
-Develop real-time deployment via mobile apps for rural health workers.
-
-Explore hybrid models (Tab-Transformer + LSTM) for longitudinal data.
-
-🌍 Impact
-
-Clinical Utility: Enables early interventions with AI-driven risk stratification.
-
-Trust & Explainability: SHAP builds confidence among non-technical healthcare providers.
-
-Scalability: Random Forest provides a lightweight alternative for low-resource settings.
-
-🛠️ Tech Stack
-
-Python (Pandas, NumPy, Scikit-learn, PyTorch)
-
-Deep Learning: Tab-Transformer
-
-Explainability: SHAP
-
-Visualization: Matplotlib, Seaborn
+The models developed in this project demonstrate significant clinical utility by enabling early intervention through AI-driven risk stratification. The use of SHAP ensures interpretability and builds trust among non-technical healthcare providers. Furthermore, lightweight models such as Random Forest provide scalability for low-resource settings, making this work practical for real-world applications in rural healthcare.
